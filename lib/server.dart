@@ -63,22 +63,7 @@ sock.add("${names[i]}${data.substring(names[0].length)}");
 // sock.add(data);
 // });
   }
-  // print(Utf8Codec().decode(data));
-  // print(data);
-  // if(data.first==35 && data.last==35){
-//  var onData= Utf8Decoder().convert(data).substring(1,).split("-");
-    // userData[onData[1]]=List();
-    // port=int.parse(onData[0]);
-// name=onData[1];
-  // }else{
-    // userData[name].add(data);
-// ports.forEach((socket){ 
-  // if(socket.remotePort!=port){
-    // socket.add(data);
-  // }
-  // }
-// );
-  // }
+
  
 });
 }
@@ -106,79 +91,5 @@ func1(sock);
   });
   });}
 List<String>names=['name221','name216','name215','name214'];
-  /*
-func3(HttpRequest req)async{
-   print(req.uri);
 
- if(req.uri.path=="/index"){
-   req.response.addStream(File("index.html").openRead())..then((onValue){
-   req.response.close();
-
-   });
- }
-}
-
-func2(HttpServer server)async{
-
-server.listen((req){
-  func3(req);
-});
-
-}
- // print(req.uri.origin);
-    // req.response.add("hello world".codeUnits);
-// req.response.close();
-
-
-  print(WebSocketTransformer.isUpgradeRequest(req));
-
-  /*
-    // print(req.headers.host);
-
-// HttpServer httpServer;
-ServerSocket.bind("localhost", 8088).then((ss){
-// func2(HttpServer.listenOn(ss));
-  ss.listen((onData){
-    ports.add(onData);
-    func1(onData);
-    
-  });
-});
-
-*/
-func1(sock);
-// sock.add("hello client again!");
-// sock.add("hello dart client!");
-// sock.add("hello dart client again!");
-// print(sock.pro);
-  });
-  if(req.uri.path=='/text'){
-    // req.response.headers.contentType=ContentType.binary;
-// req.response.headers./    
-    req.response.add("hello world".codeUnits);
-
-req.response.add("wonderful flutter".codeUnits);
-// req.response.write("hello");
-req.response.close();
-  }else{
-req.response.add("wonderful flutter".codeUnits);
-req.response.close();
-
-  }
-  
-  if(req.uri.path=='/image'){
-    req.response.headers.contentType=ContentType.parse("image/png");
-
-List<int>bytes=[];
-    File("img11.png").openRead().listen((onData){
-bytes.addAll(onData);
-    });
-  req.response.add(bytes);
-  // .then((onValue){
-    // req.response.flush().then((onValue){
-  req.response.close();
-  }
-// req.response.
-// );
-  // });*/
   
