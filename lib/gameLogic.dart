@@ -64,34 +64,7 @@ var gFlag = false, bFlag = false, yFlag = false;
 List<List<bool>> isRewardPath;
 List<bool> isInnerLoop = List(4);
 int diceValue = 0;
-/*
-gameTransition(int i, int pl, Offset value) {
-  if (fCoordinates.values.toList().indexOf(value) < 24) {
-    players[pl][i] =
-        pfCoordinates[pl - 1][fCoordinates.values.toList().indexOf(value)];
-  } else if (ifCoordinates.values.contains(value))
-  {
-    players[pl][i] =  pifCoordinates[pl - 1][ifCoordinates.values.toList().indexOf(value)];
-  }
-  else if (imCoordinates.values.contains(value)) {
-       if( imCoordinates.values.toList().indexOf(value)  + (2 * pl) <= imCoordinates.length){
-         if(
-       
-             imCoordinates.containsKey(imCoordinates.values.toList().indexOf(value)  +(2 * pl))){
-    players[pl][i] =
-             imCoordinates[imCoordinates.values.toList().indexOf(value)  +(2 * pl)];
-             }else if(
-             imCoordinates.containsKey((imCoordinates.values.toList().indexOf(value)  +(2 * pl))*8)){
-    players[pl][i] =             
-             imCoordinates[(imCoordinates.values.toList().indexOf(value) + (2*pl))%8];
-  }else{
-    players[pl][i]=Offset.zero;
-    print("error");
-  }}}
-  checkMate(i, pl);
-  playerSwap.value = !playerSwap.value;
-}
-*/
+
 gameTransition(int i, int pl, int value) {
   if (value < 24) {
     players[pl][i] =fCoordinates[value-6*(pl)<0?24+value-6*(pl):value-6*pl];
@@ -121,73 +94,6 @@ path=touch;
 }else{
  return  func11();
 }
-
-
-  /*
-    double value;
-  var plr;
-players[0].forEach((player){
-  var z=(touch.dx-player.dx).abs()+(touch.dy-player.dy).abs();
-  calc.add(z);
-  if(value==null){
-    value=z;
-plr=players[0].indexOf(player);
-  }else{
-    if(z<value){
-value=z;
-plr=players[0].indexOf(player);
-    }
-  }
-});
-// var value=values.reduce((a,b)=>a<b?a:b);
-return plr;*/
-/*
-if(touch!=null){
-  if ((players[0][0].dx ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) <= touch.dx &&
-      touch.dx <=
-          (players[0][0].dx ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) +
-              (baseSize.dx / 7) &&
-      (players[0][0].dy ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) <= touch.dy &&
-      touch.dy <=
-          (players[0][0].dy ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) +
-              (baseSize.dx / 7)) {
-    return 0;
-  } else if ((players[0][1].dx ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) <=
-          touch.dx &&
-      touch.dx <=
-          (players[0][1].dx ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) +
-              (baseSize.dx / 7) &&
-      (players[0][1].dy ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) <= touch.dy &&
-      touch.dy <=
-          (players[0][1].dy ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) +
-              (baseSize.dx / 7)) {
-    return 1;
-  } else if ((players[0][2].dx ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) <=
-          touch.dx &&
-      touch.dx <=
-          (players[0][2].dx ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) +
-              (baseSize.dx / 7) &&
-      (players[0][2].dy ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) <= touch.dy &&
-      touch.dy <=
-          (players[0][2].dy ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) +
-              (baseSize.dx / 7)) {
-    return 2;
-  } else if ((players[0][3].dx ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) <=
-          touch.dx &&
-      touch.dx <=
-          (players[0][3].dx ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) +
-              (baseSize.dx / 7) &&
-      (players[0][3].dy ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) <= touch.dy &&
-      touch.dy <=
-          (players[0][3].dy ~/ (baseSize.dx / 7)) * (baseSize.dx / 7) +
-              (baseSize.dx / 7)) {
-    return 3;
-  }else{
-    return null;
-  }} else {
-return null;
-  }
-  */
   }
 
 int randomSel = 0;
@@ -255,128 +161,7 @@ return ["fw","bw","iBw","iFw"][b.indexOf(Offset((path.dx~/(baseSize.dx/7))*(base
   return func12();
 }
 
-  /*double min;
-int val=0;
-for (int j in a){
-var z=(fCoordinates[j].dx-path.dx).abs()+(fCoordinates[j].dy-path.dy).abs();
-  calcPl.add(z);  
-  //  min=min==null?z:z>min?min:z;
-   if(min==null){
-     min=z;
-     val=a.indexOf(j);
-   }else{
-     if(z<min){
-       min=z;
-       val=a.indexOf(j);
-     }
-   }
-}
-
-switch(val~/4){
-  case 0:
-  return 'fw';
-  break;
-  case 1:
-  return 'bw';
-  break;  case 2:
-  return 'iBw';
-  break;  case 3:
-  return 'iFw';
-  break;
-}
-
-
-
-
-  if (0 * (baseSize.dx) ~/ 7 <= path.dx &&
-      path.dx <= (baseSize.dx) ~/ 7 &&
-      1 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 2 * (baseSize.dy) ~/ 7) {
-    return 'bw';
-  } else if (6 * (baseSize.dx) ~/ 7 <= path.dx &&
-      path.dx <= 7 * (baseSize.dx) ~/ 7 &&
-      1 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 2 * (baseSize.dy) ~/ 7) {
-    return 'fw';
-  } else if (
-     0 * (baseSize.dy) ~/ 7 <= path.dx &&
-      path.dx <= (baseSize.dy) ~/ 7 &&
-    5 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 6 * (baseSize.dy) ~/ 7 )
-      {
-    return 'fw';
-  } else if (
-         6 * (baseSize.dy) ~/ 7 <= path.dx &&
-      path.dx <= 7 * (baseSize.dy) ~/ 7 &&
-    5 * (baseSize.dx) ~/ 7 <= path.dy &&
-      path.dy <= 6 * (baseSize.dx) ~/ 7
- ) {
-    return 'bw';
-  } else if (1 * (baseSize.dx) ~/ 7 <= path.dx &&
-      path.dx <= 2 * (baseSize.dx) ~/ 7 &&
-      0 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 1 * (baseSize.dy) ~/ 7) {
-    return 'fw';
-  } else if (1 * (baseSize.dx) ~/ 7 <= path.dx &&
-      path.dx <= 2 * (baseSize.dx) ~/ 7 &&
-      6 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 7 * (baseSize.dy) ~/ 7) {
-    return 'bw';
-  } else if (5 * (baseSize.dx) ~/ 7 <= path.dx &&
-      path.dx <= 6 * (baseSize.dx) ~/ 7 &&
-      0 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 1 * (baseSize.dy) ~/ 7) {
-    return 'bw';
-  } else if (5 * (baseSize.dx) ~/ 7 <= path.dx &&
-      path.dx <= 6 * (baseSize.dx) ~/ 7 &&
-      6 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 7 * (baseSize.dy) ~/ 7) {
-    return 'fw';
-  } else if (4 * (baseSize.dx) ~/ 7 <= path.dx &&
-      path.dx <= 5 * (baseSize.dx) ~/ 7 &&
-      5 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 6 * (baseSize.dy) ~/ 7) {
-    return 'iFw';
-  } else if (4 * (baseSize.dx) ~/ 7 <= path.dx &&
-      path.dx <= 5 * (baseSize.dx) ~/ 7 &&
-      1 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 2 * (baseSize.dy) ~/ 7) {
-    return 'iBw';
-  } else if (2 * (baseSize.dx) ~/ 7 <= path.dx &&
-      path.dx <= 3 * (baseSize.dx) ~/ 7 &&
-      1 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 2 * (baseSize.dy) ~/ 7) {
-    return 'iFw';
-  } else if (2 * (baseSize.dx) ~/ 7 <= path.dx &&
-      path.dx <= 3 * (baseSize.dx) ~/ 7 &&
-      5 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 6 * (baseSize.dy) ~/ 7) {
-    return 'iBw';
-  } else if (1 * (baseSize.dx) ~/ 7 <= path.dx &&
-      path.dx <= 2 * (baseSize.dx) ~/ 7 &&
-      4 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 5 * (baseSize.dy) ~/ 7) {
-    return 'iFw';
-  } else if (5 * (baseSize.dx) ~/ 7 <= path.dx &&
-      path.dx <= 6 * (baseSize.dx) ~/ 7 &&
-      4 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 5 * (baseSize.dy) ~/ 7) {
-    return 'iBw';
-  } else if (1 * (baseSize.dx) ~/ 7 <= path.dx &&
-      path.dx <= 2 * (baseSize.dx) ~/ 7 &&
-      2 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 3 * (baseSize.dy) ~/ 7) {
-    return 'iBw';
-  } else if (5 * (baseSize.dx) ~/ 7 <= path.dx &&
-      path.dx <= 6 * (baseSize.dx) ~/ 7 &&
-      2 * (baseSize.dy) ~/ 7 <= path.dy &&
-      path.dy <= 3 * (baseSize.dy) ~/ 7) {
-    return 'iFw';}
-    else{
-      func12();
-    
-  } 
-  */
+ 
   }
   
 
@@ -580,10 +365,8 @@ smallFunc(16,bC,fC,bPlayer,fPlayer,max,min);
     regularPath();
   }
 
-  // players[0][idx]= ifCoordinates[diceValue];
   playerSwap.value = !playerSwap.value;
-  // print([fPlayer[idx],bPlayer[idx]]);
-  // clientSocket.add("$name-$idx-${players[0][idx].dx}-${players[0][idx].dy}");
+
   if(fCoordinates.containsValue(players[0][idx])){
 clientSocket.add("$name-$idx-${
   fCoordinates.values.toList().indexOf(players[0][idx])}");
